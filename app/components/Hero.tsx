@@ -35,7 +35,7 @@ export default function Hero() {
             isLoaded ? "scale-100 opacity-100" : "scale-110 opacity-0"
           }`}
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')`,
+            backgroundImage: `url('/project-1.png')`,
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-delance-black via-delance-black/95 to-delance-black/60" />

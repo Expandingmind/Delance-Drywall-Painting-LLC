@@ -29,37 +29,37 @@ export default function Gallery() {
 
   const projects = [
     {
-      image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/project-2.png",
       location: "Orlando, FL",
       description: "Full interior repaint with ceiling texture conversion",
       category: "Residential",
     },
     {
-      image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/project-6.png",
       location: "Winter Park, FL",
       description: "New construction with level 5 finish",
       category: "New Build",
     },
     {
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/project-8.png",
       location: "Lake Nona, FL",
       description: "Exterior painting and power washing",
       category: "Exterior",
     },
     {
-      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/project-11.png",
       location: "Kissimmee, FL",
       description: "Commercial office build-out",
       category: "Commercial",
     },
     {
-      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/project-12.png",
       location: "Sanford, FL",
       description: "Living room accent walls with custom texture",
       category: "Residential",
     },
     {
-      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/project-16.png",
       location: "Altamonte Springs, FL",
       description: "Water damage repair and restoration",
       category: "Repair",
