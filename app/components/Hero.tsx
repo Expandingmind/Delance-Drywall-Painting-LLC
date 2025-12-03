@@ -130,20 +130,21 @@ export default function Hero() {
           </p>
 
           {/* Trust badges strip */}
-          <div className={`flex flex-wrap items-center gap-6 mt-8 pt-8 border-t border-delance-gray/30
+          <div className={`flex flex-wrap items-center gap-8 mt-8 pt-8 border-t border-delance-gray/30
                           transition-all duration-700 delay-800 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}>
-            <div className="flex items-center gap-2 group cursor-default">
-              <div className="w-8 h-8 bg-delance-gray rounded-full flex items-center justify-center
+            <div className="flex items-center gap-3 group cursor-default">
+              <div className="w-9 h-9 bg-delance-gray rounded-full flex items-center justify-center
                               group-hover:bg-delance-gray-light transition-colors">
                 <span className="text-white text-xs font-bold">A+</span>
               </div>
               <span className="text-delance-silver text-sm group-hover:text-white transition-colors">BBB Rated</span>
             </div>
-            <div className="flex items-center gap-2 group cursor-default">
+            <div className="w-px h-6 bg-delance-gray/50 hidden sm:block" />
+            <div className="flex items-center gap-3 group cursor-default">
               <svg
-                className="w-5 h-5 text-yellow-400 group-hover:scale-110 transition-transform"
+                className="w-6 h-6 text-yellow-400 group-hover:scale-110 transition-transform"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >

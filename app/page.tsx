@@ -13,7 +13,6 @@ import Hero from "./components/Hero";
 import TrustBand from "./components/TrustBand";
 import PainlessSection from "./components/PainlessSection";
 import Reviews from "./components/Reviews";
-import WhyChoose from "./components/WhyChoose";
 import Services from "./components/Services";
 import Gallery from "./components/Gallery";
 import BlogCards from "./components/BlogCards";
@@ -41,9 +40,6 @@ export default function Home() {
       
       {/* Customer reviews/testimonials */}
       <Reviews />
-      
-      {/* Why choose Delance feature grid */}
-      <WhyChoose />
       
       {/* Services grid */}
       <Services />
