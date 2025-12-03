@@ -30,9 +30,6 @@ export default function Home() {
       {/* Hero section with headline and CTA */}
       <Hero />
       
-      {/* "Drywall is messy, we make it painless" section */}
-      <PainlessSection />
-      
       {/* Customer reviews/testimonials */}
       <Reviews />
       
@@ -41,6 +38,9 @@ export default function Home() {
       
       {/* Project gallery */}
       <Gallery />
+      
+      {/* "Drywall is messy, we make it painless" section */}
+      <PainlessSection />
       
       {/* FAQ accordion */}
       <FAQ />
