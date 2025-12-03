@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-delance-black text-delance-light antialiased;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-delance-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-delance-gray-light rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-delance-silver;
+  }
+}
+
+/* Component layer for reusable styles */
+@layer components {
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-delance-black font-semibold rounded-full 
+           transition-all duration-300 hover:bg-delance-light hover:scale-105 active:scale-95;
+  }
+  
+  /* Secondary/outline button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-transparent text-white font-semibold rounded-full 
+           border-2 border-white/30 transition-all duration-300 hover:border-white hover:bg-white/10;
+  }
+  
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Section padding */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  /* Card style */
+  .card {
+    @apply bg-delance-charcoal rounded-2xl p-6 transition-all duration-300 hover:bg-delance-charcoal-light;
+  }
+  
+  /* Light card */
+  .card-light {
+    @apply bg-delance-off-white text-delance-black rounded-2xl p-6 transition-all duration-300 hover:shadow-xl;
+  }
+  
+  /* Gradient text effect */
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-delance-light to-delance-silver bg-clip-text text-transparent;
+  }
+}
+
+/* Utility layer for custom utilities */
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Text shadow for better readability */
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
+
