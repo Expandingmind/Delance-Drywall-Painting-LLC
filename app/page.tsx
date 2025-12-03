@@ -10,12 +10,10 @@
 import TopBar from "./components/TopBar";
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
-import TrustBand from "./components/TrustBand";
 import PainlessSection from "./components/PainlessSection";
 import Reviews from "./components/Reviews";
 import Services from "./components/Services";
 import Gallery from "./components/Gallery";
-import BlogCards from "./components/BlogCards";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -32,9 +30,6 @@ export default function Home() {
       {/* Hero section with headline and CTA */}
       <Hero />
       
-      {/* Trust badges band */}
-      <TrustBand />
-      
       {/* "Drywall is messy, we make it painless" section */}
       <PainlessSection />
       
@@ -46,9 +41,6 @@ export default function Home() {
       
       {/* Project gallery */}
       <Gallery />
-      
-      {/* Blog/educational content cards */}
-      <BlogCards />
       
       {/* FAQ accordion */}
       <FAQ />
