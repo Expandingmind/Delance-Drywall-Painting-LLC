@@ -35,8 +35,12 @@ export default function Footer() {
           {/* Logo and tagline */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-delance-black font-bold text-xl">D</span>
+              <div className="w-14 h-14 flex items-center justify-center">
+                <img 
+                  src="/logo.png" 
+                  alt="Delance Logo" 
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="text-white font-bold text-xl">Delance</span>

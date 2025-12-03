@@ -46,9 +46,13 @@ export default function Navigation() {
       <div className="section-container">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-              <span className="text-delance-black font-bold text-lg">D</span>
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="relative w-12 h-12 flex items-center justify-center">
+              <img 
+                src="/logo.png" 
+                alt="Delance Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="hidden sm:block">
               <span className="text-white font-bold text-lg tracking-tight">
