@@ -82,29 +82,8 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Right side - Phone & CTA */}
+          {/* Right side - CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a
-              href="tel:407-274-3487"
-              className="flex items-center gap-2 text-delance-light hover:text-white 
-                         transition-colors duration-200 px-4 py-2 rounded-full 
-                         border border-delance-gray-light hover:border-delance-silver"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-              <span className="text-sm font-medium">(407) 274-3487</span>
-            </a>
             <button
               onClick={() => scrollToSection("#contact")}
               className="btn-primary text-sm"
@@ -159,25 +138,6 @@ export default function Navigation() {
                 </button>
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-delance-gray/30">
-                <a
-                  href="tel:407-274-3487"
-                  className="flex items-center gap-2 text-delance-light"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  (407) 274-3487
-                </a>
                 <button
                   onClick={() => scrollToSection("#contact")}
                   className="btn-primary text-center"
