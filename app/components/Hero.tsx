@@ -1,11 +1,18 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 /**
  * Hero Component
- * Main hero section with headline, CTA buttons, and abstract shape
- * Inspired by callmother.com but styled for Delance brand
+ * Main hero section with animated headline, CTA buttons, and background image
  */
 export default function Hero() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
@@ -15,78 +22,85 @@ export default function Hero() {
 
   return (
     <section className="relative bg-delance-black min-h-[90vh] flex items-center overflow-hidden">
-      {/* Abstract organic shape on the right - grayscale version */}
-      <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[55%] overflow-hidden">
-        {/* Background Image with overlay */}
+      {/* Animated background gradient */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-br from-delance-gray/20 via-transparent to-transparent" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-delance-gray/10 to-transparent" />
+      </div>
+
+      {/* Background image with overlay */}
+      <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[60%] overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${
+            isLoaded ? "scale-100 opacity-100" : "scale-110 opacity-0"
+          }`}
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')`,
           }}
         >
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-delance-black via-delance-black/90 to-delance-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-delance-black via-delance-black/95 to-delance-black/60" />
         </div>
         
-        {/* Abstract shape overlay */}
-        <svg
-          viewBox="0 0 800 800"
-          className="absolute -right-20 top-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-20"
-          style={{ filter: "blur(60px)" }}
-        >
-          <defs>
-            <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#4a4a4a" />
-              <stop offset="50%" stopColor="#3a3a3a" />
-              <stop offset="100%" stopColor="#2a2a2a" />
-            </linearGradient>
-          </defs>
-          <ellipse
-            cx="400"
-            cy="400"
-            rx="350"
-            ry="380"
-            fill="url(#heroGradient)"
-          />
-        </svg>
+        {/* Floating particles/shapes for visual interest */}
+        <div className={`absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-delance-gray/5 blur-3xl 
+                        transition-all duration-1000 delay-500 ${isLoaded ? "opacity-100" : "opacity-0"}`} />
+        <div className={`absolute bottom-1/4 right-1/3 w-48 h-48 rounded-full bg-delance-gray/5 blur-3xl
+                        transition-all duration-1000 delay-700 ${isLoaded ? "opacity-100" : "opacity-0"}`} />
       </div>
 
       {/* Content */}
       <div className="section-container relative z-10">
         <div className="max-w-2xl">
           {/* Eyebrow text */}
-          <p className="text-delance-silver text-sm sm:text-base font-medium tracking-wider uppercase mb-4 animate-fade-in">
+          <p className={`text-delance-silver text-sm sm:text-base font-medium tracking-wider uppercase mb-4
+                        transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Drywall & Painting in Orlando, FL
           </p>
 
-          {/* Main headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6 animate-slide-up">
-            Walls So Smooth
-            <br />
-            They Disappear.
-            <br />
-            <span className="text-delance-silver italic font-light">
+          {/* Main headline - staggered animation */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
+            <span className={`block transition-all duration-700 delay-100 ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
+              Walls So Smooth
+            </span>
+            <span className={`block transition-all duration-700 delay-200 ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
+              They Disappear.
+            </span>
+            <span className={`block text-delance-silver italic font-light transition-all duration-700 delay-300 ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
               Paint That Makes
             </span>
-            <br />
-            Them Pop.
+            <span className={`block transition-all duration-700 delay-400 ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
+              Them Pop.
+            </span>
           </h1>
 
           {/* Supporting paragraph */}
-          <p className="text-delance-light/80 text-lg sm:text-xl leading-relaxed mb-8 max-w-xl animate-slide-up animation-delay-100">
+          <p className={`text-delance-light/80 text-lg sm:text-xl leading-relaxed mb-8 max-w-xl
+                        transition-all duration-700 delay-500 ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}>
             From flawless level-5 finishes to precision painting, we transform 
             spaces with craftsmanship you can see and feel. Clean job sites, 
             clear communication, and on-time completion—every project.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8 animate-slide-up animation-delay-200">
+          <div className={`flex flex-col sm:flex-row gap-4 mb-8 transition-all duration-700 delay-600 ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}>
             <a
               href="tel:407-274-3487"
-              className="btn-primary text-center sm:text-left"
+              className="btn-primary text-center sm:text-left group"
             >
               <svg
-                className="w-5 h-5 mr-2"
+                className="w-5 h-5 mr-2 group-hover:animate-pulse"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -100,40 +114,60 @@ export default function Hero() {
               </svg>
               Call (407) 274-3487
             </a>
-            <button onClick={scrollToContact} className="btn-secondary">
+            <button onClick={scrollToContact} className="btn-secondary group">
               Request a Free Estimate
+              <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
 
           {/* Reassurance line */}
-          <p className="text-delance-silver text-sm animate-slide-up animation-delay-300">
+          <p className={`text-delance-silver text-sm transition-all duration-700 delay-700 ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}>
             Licensed & insured. Serving homes and businesses across Central Florida.
           </p>
 
           {/* Trust badges strip */}
-          <div className="flex flex-wrap items-center gap-6 mt-8 pt-8 border-t border-delance-gray/30 animate-slide-up animation-delay-400">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-delance-gray rounded-full flex items-center justify-center">
+          <div className={`flex flex-wrap items-center gap-6 mt-8 pt-8 border-t border-delance-gray/30
+                          transition-all duration-700 delay-800 ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}>
+            <div className="flex items-center gap-2 group cursor-default">
+              <div className="w-8 h-8 bg-delance-gray rounded-full flex items-center justify-center
+                              group-hover:bg-delance-gray-light transition-colors">
                 <span className="text-white text-xs font-bold">A+</span>
               </div>
-              <span className="text-delance-silver text-sm">BBB Rated</span>
+              <span className="text-delance-silver text-sm group-hover:text-white transition-colors">BBB Rated</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 group cursor-default">
               <svg
-                className="w-5 h-5 text-yellow-400"
+                className="w-5 h-5 text-yellow-400 group-hover:scale-110 transition-transform"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
-              <span className="text-delance-silver text-sm">
+              <span className="text-delance-silver text-sm group-hover:text-white transition-colors">
                 500+ Projects Completed
               </span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-700 delay-1000 ${
+        isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      }`}>
+        <div className="flex flex-col items-center gap-2 text-delance-silver animate-bounce">
+          <span className="text-xs tracking-wider">SCROLL</span>
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </div>
     </section>
   );
 }
-

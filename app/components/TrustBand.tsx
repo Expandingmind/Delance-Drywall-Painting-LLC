@@ -1,8 +1,32 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 /**
  * TrustBand Component
- * Light gray band showcasing trust badges and company credentials
+ * Light gray band showcasing trust badges with scroll animations
  */
 export default function TrustBand() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const badges = [
     {
       icon: (
@@ -49,10 +73,12 @@ export default function TrustBand() {
   ];
 
   return (
-    <section className="bg-delance-off-white py-12 md:py-16">
+    <section className="bg-delance-off-white py-14 md:py-18 overflow-hidden" ref={sectionRef}>
       <div className="section-container">
         {/* Header */}
-        <div className="text-center mb-10">
+        <div className={`text-center mb-10 transition-all duration-700 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
           <h2 className="text-2xl md:text-3xl font-bold text-delance-black mb-3">
             Trusted Drywall & Painting in Central Florida
           </h2>
@@ -63,18 +89,22 @@ export default function TrustBand() {
         </div>
 
         {/* Badges */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {badges.map((badge, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center p-6 rounded-2xl 
-                         bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+              className={`group flex flex-col items-center text-center p-6 rounded-2xl 
+                         bg-white shadow-sm hover:shadow-xl transition-all duration-500
+                         hover:-translate-y-2 cursor-default
+                         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${index * 100 + 200}ms` }}
             >
               <div className="w-14 h-14 bg-delance-black rounded-xl flex items-center 
-                              justify-center text-white mb-4">
+                              justify-center text-white mb-4 group-hover:scale-110 
+                              group-hover:rotate-3 transition-all duration-300">
                 {badge.icon}
               </div>
-              <h3 className="text-delance-black font-bold text-lg mb-1">
+              <h3 className="text-delance-black font-bold text-lg mb-1 group-hover:text-delance-gray-mid transition-colors">
                 {badge.title}
               </h3>
               <p className="text-delance-gray-light text-sm">{badge.description}</p>
@@ -85,4 +115,3 @@ export default function TrustBand() {
     </section>
   );
 }
-
