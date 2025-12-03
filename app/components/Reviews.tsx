@@ -5,106 +5,136 @@ import { useEffect, useRef } from "react";
 /**
  * Reviews Component
  * Testimonials carousel with Google-style review cards
- * Features: Auto-scrolling animation, fade edges, Google icons
+ * Features: Dual-row auto-scrolling animation, fade edges, Google icons
  */
 
 interface Review {
   name: string;
   role: string;
   roleColor: string;
-  location: string;
   rating: number;
   text: string;
   date: string;
   initial: string;
 }
 
-const reviews: Review[] = [
+const reviewsRow1: Review[] = [
   {
     name: "Robert H.",
     role: "HOMEOWNER",
     roleColor: "text-blue-400",
-    location: "Orlando",
     rating: 5,
-    text: "Transformed our entire home from outdated popcorn ceilings to a beautiful knockdown texture. The crew was professional, on time every day, and left the place spotless.",
-    date: "NOVEMBER 2024",
+    text: "Transformed our entire home from outdated popcorn ceilings to a beautiful knockdown texture. Professional and clean.",
+    date: "NOV 2024",
     initial: "R",
   },
   {
     name: "Maria S.",
     role: "PROPERTY MANAGER",
     roleColor: "text-emerald-400",
-    location: "Winter Park",
     rating: 5,
-    text: "We had water damage in our living room that needed expert repair. Delance matched the existing texture perfectly—you can't even tell where the damage was.",
-    date: "OCTOBER 2024",
+    text: "Water damage repair done perfectly. You can't even tell where the damage was. Excellent communication.",
+    date: "OCT 2024",
     initial: "M",
   },
   {
     name: "James T.",
     role: "HOMEOWNER",
     roleColor: "text-blue-400",
-    location: "Lake Nona",
     rating: 5,
-    text: "Hired them for a full interior repaint of our 3,000 sq ft home. The attention to detail was incredible—perfect cut lines, no drips, and they moved all our furniture back.",
-    date: "SEPTEMBER 2024",
+    text: "Full interior repaint of our 3,000 sq ft home. Perfect cut lines, no drips. True professionals.",
+    date: "SEP 2024",
     initial: "J",
   },
   {
     name: "David K.",
     role: "BUSINESS OWNER",
     roleColor: "text-amber-400",
-    location: "Downtown Orlando",
     rating: 5,
-    text: "Delance handled drywall and painting for our new office build-out. Level 5 finish throughout, completed on schedule, and the price was exactly what was quoted.",
-    date: "NOVEMBER 2024",
+    text: "Office build-out with level 5 finish. Completed on schedule and price was exactly as quoted.",
+    date: "NOV 2024",
     initial: "D",
   },
   {
     name: "Sarah M.",
     role: "HOMEOWNER",
     roleColor: "text-blue-400",
-    location: "Kissimmee",
     rating: 5,
-    text: "After getting quotes from several contractors, Delance stood out for their professionalism and fair pricing. The exterior paint job looks amazing!",
-    date: "AUGUST 2024",
+    text: "Exterior paint job looks amazing! Neighbors keep asking who did our house!",
+    date: "AUG 2024",
     initial: "S",
   },
   {
     name: "Carlos R.",
     role: "CONTRACTOR",
     roleColor: "text-purple-400",
-    location: "Sanford",
     rating: 5,
-    text: "I subcontract Delance for all my drywall needs. Their level 5 finishes are the best in Central Florida. Reliable, professional, and always on time.",
-    date: "OCTOBER 2024",
+    text: "I subcontract Delance for all my drywall needs. Best level 5 finishes in Central Florida.",
+    date: "OCT 2024",
     initial: "C",
   },
+];
+
+const reviewsRow2: Review[] = [
   {
     name: "Linda P.",
     role: "HOMEOWNER",
     roleColor: "text-blue-400",
-    location: "Altamonte Springs",
     rating: 5,
-    text: "They removed our popcorn ceilings and applied a smooth finish throughout the house. The dust control was impressive—our furniture stayed clean!",
-    date: "SEPTEMBER 2024",
+    text: "Popcorn ceiling removal was clean and dust-free. Our furniture stayed spotless!",
+    date: "SEP 2024",
     initial: "L",
   },
   {
     name: "Michael W.",
-    role: "REAL ESTATE INVESTOR",
+    role: "INVESTOR",
     roleColor: "text-rose-400",
-    location: "Orlando",
     rating: 5,
-    text: "I've used Delance on multiple flip projects. They're fast, affordable, and the quality is always top-notch. My go-to for drywall and paint.",
-    date: "NOVEMBER 2024",
+    text: "Used Delance on multiple flips. Fast, affordable, and always top-notch quality.",
+    date: "NOV 2024",
     initial: "M",
+  },
+  {
+    name: "Jennifer A.",
+    role: "HOMEOWNER",
+    roleColor: "text-blue-400",
+    rating: 5,
+    text: "Kitchen and bathroom repaint exceeded expectations. So detail-oriented!",
+    date: "OCT 2024",
+    initial: "J",
+  },
+  {
+    name: "Tony G.",
+    role: "BUSINESS OWNER",
+    roleColor: "text-amber-400",
+    rating: 5,
+    text: "Restaurant renovation done fast. Minimal disruption to our business. Highly recommend.",
+    date: "SEP 2024",
+    initial: "T",
+  },
+  {
+    name: "Amanda K.",
+    role: "REALTOR",
+    roleColor: "text-cyan-400",
+    rating: 5,
+    text: "My go-to for all listing prep. They make homes sell faster with their quality work.",
+    date: "NOV 2024",
+    initial: "A",
+  },
+  {
+    name: "Steve B.",
+    role: "HOMEOWNER",
+    roleColor: "text-blue-400",
+    rating: 5,
+    text: "Garage conversion drywall was perfect. Clean work and great communication throughout.",
+    date: "OCT 2024",
+    initial: "S",
   },
 ];
 
 // Google "G" Logo SVG Component
 const GoogleLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-7 h-7">
+  <svg viewBox="0 0 24 24" className="w-5 h-5">
     <path
       fill="#4285F4"
       d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -130,7 +160,7 @@ const StarRating = ({ rating }: { rating: number }) => (
     {[...Array(5)].map((_, i) => (
       <svg
         key={i}
-        className={`w-4 h-4 ${i < rating ? "text-yellow-400" : "text-delance-gray"}`}
+        className={`w-3 h-3 ${i < rating ? "text-yellow-400" : "text-delance-gray"}`}
         fill="currentColor"
         viewBox="0 0 20 20"
       >
@@ -140,76 +170,86 @@ const StarRating = ({ rating }: { rating: number }) => (
   </div>
 );
 
-// Review Card Component
+// Review Card Component - Smaller size
 const ReviewCard = ({ review }: { review: Review }) => (
   <div
-    className="flex-shrink-0 w-[320px] bg-gradient-to-b from-delance-charcoal to-delance-charcoal-light 
-               rounded-2xl p-6 border border-delance-gray/30 hover:border-delance-gray/50 
+    className="flex-shrink-0 w-[240px] bg-gradient-to-b from-delance-charcoal to-delance-charcoal-light 
+               rounded-xl p-4 border border-delance-gray/30 hover:border-delance-gray/50 
                transition-all duration-300"
   >
     {/* Header with Google logo and initial */}
-    <div className="flex items-start justify-between mb-4">
+    <div className="flex items-start justify-between mb-2">
       <GoogleLogo />
       <div
-        className="w-8 h-8 rounded-full bg-delance-gray-mid flex items-center justify-center 
-                   text-white text-sm font-medium"
+        className="w-6 h-6 rounded-full bg-delance-gray-mid flex items-center justify-center 
+                   text-white text-xs font-medium"
       >
         {review.initial}
       </div>
     </div>
 
     {/* Star rating */}
-    <div className="mb-3">
+    <div className="mb-2">
       <StarRating rating={review.rating} />
     </div>
 
     {/* Name and role */}
-    <h4 className="text-white font-semibold text-lg">{review.name}</h4>
-    <p className={`text-xs font-semibold tracking-wider mb-3 ${review.roleColor}`}>
+    <h4 className="text-white font-semibold text-sm">{review.name}</h4>
+    <p className={`text-[10px] font-semibold tracking-wider mb-2 ${review.roleColor}`}>
       {review.role}
     </p>
 
     {/* Review text */}
-    <p className="text-delance-silver text-sm leading-relaxed mb-4 line-clamp-4">
+    <p className="text-delance-silver text-xs leading-relaxed mb-3 line-clamp-3">
       &ldquo;{review.text}&rdquo;
     </p>
 
     {/* Date */}
-    <p className="text-delance-gray-light text-xs font-medium tracking-wider pt-3 border-t border-delance-gray/30">
+    <p className="text-delance-gray-light text-[10px] font-medium tracking-wider pt-2 border-t border-delance-gray/30">
       {review.date}
     </p>
   </div>
 );
 
-export default function Reviews() {
+// Scrolling Row Component
+const ScrollingRow = ({
+  reviews,
+  direction,
+  speed = 0.5,
+}: {
+  reviews: Review[];
+  direction: "left" | "right";
+  speed?: number;
+}) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll animation
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
     let animationId: number;
-    let scrollPosition = 0;
-    const scrollSpeed = 0.5; // pixels per frame
+    let scrollPosition = direction === "left" ? 0 : scrollContainer.scrollWidth / 2;
 
     const animate = () => {
-      scrollPosition += scrollSpeed;
-      
-      // Reset to beginning when reaching halfway (since we duplicate the content)
-      const halfWidth = scrollContainer.scrollWidth / 2;
-      if (scrollPosition >= halfWidth) {
-        scrollPosition = 0;
+      if (direction === "left") {
+        scrollPosition += speed;
+        const halfWidth = scrollContainer.scrollWidth / 2;
+        if (scrollPosition >= halfWidth) {
+          scrollPosition = 0;
+        }
+      } else {
+        scrollPosition -= speed;
+        if (scrollPosition <= 0) {
+          scrollPosition = scrollContainer.scrollWidth / 2;
+        }
       }
-      
+
       scrollContainer.scrollLeft = scrollPosition;
       animationId = requestAnimationFrame(animate);
     };
 
-    // Start animation
     animationId = requestAnimationFrame(animate);
 
-    // Pause on hover
     const handleMouseEnter = () => cancelAnimationFrame(animationId);
     const handleMouseLeave = () => {
       scrollPosition = scrollContainer.scrollLeft;
@@ -224,21 +264,34 @@ export default function Reviews() {
       scrollContainer.removeEventListener("mouseenter", handleMouseEnter);
       scrollContainer.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [direction, speed]);
 
-  // Duplicate reviews for seamless infinite scroll
   const duplicatedReviews = [...reviews, ...reviews];
 
   return (
-    <section id="reviews" className="bg-white py-16 md:py-24 overflow-hidden">
-      <div className="section-container mb-10">
+    <div
+      ref={scrollRef}
+      className="flex gap-4 overflow-x-hidden scrollbar-hide py-2"
+      style={{ scrollBehavior: "auto" }}
+    >
+      {duplicatedReviews.map((review, index) => (
+        <ReviewCard key={`${review.name}-${index}`} review={review} />
+      ))}
+    </div>
+  );
+};
+
+export default function Reviews() {
+  return (
+    <section id="reviews" className="bg-white py-16 md:py-20 overflow-hidden">
+      <div className="section-container mb-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-delance-black mb-3">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-delance-black mb-2">
               Why Homeowners Love Delance
             </h2>
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-2 flex-wrap text-sm">
               <span className="text-delance-gray-mid font-semibold">50+ reviews</span>
               <span className="text-delance-gray-mid">with an overall</span>
               <span className="font-semibold text-delance-black">4.9 star ranking</span>
@@ -246,7 +299,7 @@ export default function Reviews() {
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
-                    className="w-5 h-5 text-yellow-400"
+                    className="w-4 h-4 text-yellow-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -262,11 +315,11 @@ export default function Reviews() {
             href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK/review"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 bg-white border-2 border-delance-black 
-                       text-delance-black font-semibold rounded-full hover:bg-delance-black hover:text-white 
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-delance-black 
+                       text-delance-black text-sm font-semibold rounded-full hover:bg-delance-black hover:text-white 
                        transition-all duration-300 self-start md:self-auto"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -279,41 +332,40 @@ export default function Reviews() {
         </div>
       </div>
 
-      {/* Carousel with fade edges */}
+      {/* Carousel rows with fade edges */}
       <div className="relative">
         {/* Left fade gradient */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none"
+          className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(to right, white 0%, white 20%, transparent 100%)",
+            background: "linear-gradient(to right, white 0%, white 10%, transparent 100%)",
           }}
         />
 
         {/* Right fade gradient */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none"
+          className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(to left, white 0%, white 20%, transparent 100%)",
+            background: "linear-gradient(to left, white 0%, white 10%, transparent 100%)",
           }}
         />
 
-        {/* Scrolling container */}
-        <div
-          ref={scrollRef}
-          className="flex gap-5 overflow-x-hidden scrollbar-hide py-4 px-4"
-          style={{ scrollBehavior: "auto" }}
-        >
-          {duplicatedReviews.map((review, index) => (
-            <ReviewCard key={`${review.name}-${index}`} review={review} />
-          ))}
+        {/* Row 1 - scrolling left */}
+        <div className="px-4">
+          <ScrollingRow reviews={reviewsRow1} direction="left" speed={0.4} />
+        </div>
+
+        {/* Row 2 - scrolling right (opposite direction) */}
+        <div className="px-4 mt-4">
+          <ScrollingRow reviews={reviewsRow2} direction="right" speed={0.4} />
         </div>
       </div>
 
-      {/* Google Guaranteed badge */}
-      <div className="section-container mt-8">
-        <div className="flex items-center justify-center gap-3 text-delance-gray-mid">
-          <div className="flex items-center gap-2 px-4 py-2 bg-delance-off-white rounded-full">
-            <svg viewBox="0 0 24 24" className="w-5 h-5">
+      {/* Google Verified badge */}
+      <div className="section-container mt-6">
+        <div className="flex items-center justify-center">
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-delance-off-white rounded-full">
+            <svg viewBox="0 0 24 24" className="w-4 h-4">
               <path
                 fill="#4285F4"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -331,7 +383,7 @@ export default function Reviews() {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            <span className="text-sm font-medium text-delance-black">Google Verified Reviews</span>
+            <span className="text-xs font-medium text-delance-black">Google Verified Reviews</span>
           </div>
         </div>
       </div>
