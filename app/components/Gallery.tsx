@@ -154,26 +154,26 @@ export default function Gallery() {
     {
       image: "/project-6.png",
       location: "Winter Park, FL",
-      description: "New construction with level 5 finish",
-      category: "New Build",
+      description: "Exterior Paint",
+      category: "Exterior",
     },
     {
       image: "/project-8.png",
       location: "Lake Nona, FL",
-      description: "Exterior painting and power washing",
-      category: "Exterior",
+      description: "Accent Walls",
+      category: "Residential",
     },
     {
       image: "/project-11.png",
       location: "Kissimmee, FL",
-      description: "Commercial office build-out",
+      description: "Metal Framing",
       category: "Commercial",
     },
     {
       image: "/project-12.png",
       location: "Sanford, FL",
-      description: "Living room accent walls with custom texture",
-      category: "Residential",
+      description: "Ceiling Tile",
+      category: "Commercial",
     },
     {
       image: "/project-16.png",
@@ -184,8 +184,8 @@ export default function Gallery() {
     {
       image: "/project-13.png",
       location: "Davenport, FL",
-      description: "High ceiling drywall installation",
-      category: "New Build",
+      description: "Level 5 Finish",
+      category: "Residential",
     },
     {
       image: "/project-14.png",
@@ -202,14 +202,14 @@ export default function Gallery() {
     {
       image: "/project-18.png",
       location: "Ocoee, FL",
-      description: "Garage conversion and finishing",
-      category: "Residential",
+      description: "Commercial",
+      category: "Commercial",
     },
     {
       image: "/project-19.png",
       location: "Windermere, FL",
-      description: "Luxury home level 5 finish",
-      category: "New Build",
+      description: "Level 4 Finish",
+      category: "Residential",
     },
     {
       image: "/project-20.png",
