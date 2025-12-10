@@ -304,13 +304,6 @@ export default function Gallery() {
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 transform translate-y-2 
                                 group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-delance-silver text-xs md:text-sm font-medium mb-1 flex items-center gap-1">
-                    <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    </svg>
-                    {project.location}
-                  </p>
                   <p className={`text-white font-semibold leading-tight ${
                     index === 0 || index === 5 ? "text-base md:text-xl" : "text-sm md:text-base"
                   }`}>
