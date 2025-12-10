@@ -406,7 +406,7 @@ const ServiceCard = ({
       }}
     >
       {/* Image container */}
-      <div className="relative h-40 overflow-hidden">
+      <div className="relative h-28 sm:h-40 overflow-hidden">
         <img
           src={service.image}
           alt={service.title}
@@ -418,7 +418,7 @@ const ServiceCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-delance-charcoal via-delance-charcoal/50 to-transparent" />
         
         {/* Icon badge */}
-        <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm 
+        <div className="absolute top-2 left-2 sm:top-3 sm:left-3 w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-sm 
                         flex items-center justify-center text-white border border-white/20
                         group-hover:bg-white group-hover:text-delance-black transition-all duration-300">
           {service.icon}
@@ -426,20 +426,21 @@ const ServiceCard = ({
       </div>
 
       {/* Content */}
-      <div className="p-5">
-        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-delance-light transition-colors">
+      <div className="p-3 sm:p-5">
+        <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2 group-hover:text-delance-light transition-colors line-clamp-2">
           {service.title}
         </h3>
-        <p className="text-delance-silver text-sm leading-relaxed">
+        <p className="text-delance-silver text-xs sm:text-sm leading-relaxed line-clamp-2 sm:line-clamp-none hidden sm:block">
           {service.description}
         </p>
 
         {/* Learn more link */}
-        <div className={`mt-4 flex items-center gap-2 text-sm font-medium transition-all duration-300 ${
+        <div className={`mt-2 sm:mt-4 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-medium transition-all duration-300 ${
           isHovered ? "text-white translate-x-0 opacity-100" : "text-delance-silver -translate-x-2 opacity-0"
         }`}>
-          <span>Learn more</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span className="hidden sm:inline">Learn more</span>
+          <span className="sm:hidden">View</span>
+          <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>
@@ -509,7 +510,7 @@ export default function Services() {
           </div>
 
           {/* Services grid */}
-          <div className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-5 transition-all duration-1000 delay-300 ${
+          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 transition-all duration-1000 delay-300 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}>
             {services.map((service, index) => (
