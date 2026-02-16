@@ -14,6 +14,7 @@ import PainlessSection from "./components/PainlessSection";
 import Reviews from "./components/Reviews";
 import Services from "./components/Services";
 import Gallery from "./components/Gallery";
+import AlternativeService from "./components/AlternativeService";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -41,6 +42,9 @@ export default function Home() {
       
       {/* "Drywall is messy, we make it painless" section */}
       <PainlessSection />
+      
+      {/* Alternative service: 3 Floor Guys (flooring) */}
+      <AlternativeService />
       
       {/* FAQ accordion */}
       <FAQ />
